@@ -10,7 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let time = ["Soft": 5, "Medium": 7, "Hard": 12]
+    var counter: Int = 0
+    
+    let time = ["Soft": 30, "Medium": 42, "Hard": 72]
     
     @IBAction func hardnessSelected(_ sender: UIButton) {
         
@@ -18,6 +20,18 @@ class ViewController: UIViewController {
         
         print(time[hardness]!)
         
+        counter = time[hardness]!
+        
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+        
+    }
+    
+    @objc func updateCounter() {
+        //example functionality
+        if counter > 0 {
+            print(counter)
+            counter -= 1
+        }
     }
     
 
